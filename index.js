@@ -1,5 +1,12 @@
 const { Client, GatewayIntentBits } = require('discord.js');
+const http = require('http');
 require('dotenv').config();
+
+// UptimeRobot用ヘルスチェックサーバー
+http.createServer((req, res) => {
+  res.writeHead(200);
+  res.end('台本マスター稼働中');
+}).listen(process.env.PORT || 3000);
 
 const client = new Client({
   intents: [
